@@ -1,13 +1,14 @@
-#include "OLEDDisplay.h"
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
 
-class QRcode
+class ESP8266QRCode
 {
 	private:
-		OLEDDisplay *display;
+		Adafruit_SSD1306 *display;
 		void render(int x, int y, int color);
 
 	public:
-		QRcode(OLEDDisplay *display);
+		ESP8266QRCode(Adafruit_SSD1306 *display);
 
 		void init();
 		void debug();

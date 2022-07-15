@@ -6,14 +6,14 @@
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/anunpanya/ESP8266_QRcode.git"
+    "url": "https://github.com/rfolkker/ESP8266QRcode.git"
   },
   "authors":
   [
     {
-        "name": "Anun Panya",
-        "email": "aspirinenun@gmail.com",
-        "url": "https://www.facebook.com/anun.panya"
+        "name": "Roy Folkker",
+        "email": "rfolkker@gmail.com",
+        "url": "https://github.com/rfolkker/ESP8266QRcode"
     }
   ],
   "frameworks": "arduino",

@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "qrcode.h"
+#include "ESP8266QRCode.h"
 #include "qrencode.h"
 
 int offsetsX = 42;
@@ -8,44 +8,40 @@ int screenwidth = 128;
 int screenheight = 64;
 bool QRDEBUG = false;
 
-QRcode::QRcode(OLEDDisplay *display){
+ESP8266QRCode::ESP8266QRCode(Adafruit_SSD1306 *display){
 	this->display = display;
 }
 
-void QRcode::init(){
+void ESP8266QRCode::init(){
 	if(QRDEBUG)
 		Serial.println("QRcode init");
 
-	display->init();
-  display->flipScreenVertically();
-	display->setColor(WHITE);
+	// display->init();
+  	// display->flipScreenVertically();
+	// display->setColor(WHITE);
 }
 
-void QRcode::debug(){
+void ESP8266QRCode::debug(){
 	QRDEBUG = true;
 }
 
-void QRcode::render(int x, int y, int color){
+void ESP8266QRCode::render(int x, int y, int color){
   x=x+offsetsX;
   y=y+offsetsY;
   if(color==1) {
-	display->setColor(BLACK);
-    display->setPixel(x, y);
+	display->drawPixel(x, y, SSD1306_BLACK);
   }
   else {
-	display->setColor(WHITE);
-    display->setPixel(x, y);
+	display->drawPixel(x, y, SSD1306_WHITE);
   }
 }
 
-void QRcode::screenwhite(){
-	display->clear();
-	display->setColor(WHITE);
-	display->fillRect(0, 0, screenwidth, screenheight);
-	display->display();
+void ESP8266QRCode::screenwhite(){
+	display->clearDisplay();
+	display->fillRect(0, 0, screenwidth, screenheight, SSD1306_WHITE);
 }
 
-void QRcode::create(String message) {
+void ESP8266QRCode::create(String message) {
 
   // create QR code
   message.toCharArray((char *)strinbuf,260);
